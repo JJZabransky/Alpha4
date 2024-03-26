@@ -8,7 +8,7 @@ class UDP_discovery():
         self.broadcast = broadcast
         self.port = port
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.bind((network, self.port))  # Listen on port 9876
+        self.sock.bind((network, self.port))
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
     def send_discovery_message(self):
