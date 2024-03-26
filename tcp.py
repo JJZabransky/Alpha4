@@ -35,13 +35,10 @@ class TCP_Communication():
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as tcp_socket:
             try:
                 tcp_socket.connect((self.peer_ip, self.peer_port))
-                # Handshake
                 handshake_response = self.perform_handshake(tcp_socket)
                 if handshake_response and handshake_response.get("status") == "ok":
                     print("Handshake successful with peer:", self.peer_id)
-                    # Update local message history
                     self.message_history.update(handshake_response.get("messages", {}))
-                    # Send new messages
                     for message_id, message_content in self.message_history.items():
                         self.send_new_message(tcp_socket, message_id, message_content['message'])
                         print("Sent message:", message_content['message'])
