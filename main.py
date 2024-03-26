@@ -19,7 +19,6 @@ if __name__ == "__main__":
         send_thread.join()
         receive_thread.join()
         tcp_thread.join()
-
     except KeyboardInterrupt:
         print("Stopping the discovery and communication service.")
     
